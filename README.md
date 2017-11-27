@@ -7,6 +7,6 @@
 　参加する、かかわる。約束するなど。らしい。
 log
  11/27
-   GithubDesktopを使ってclone,pushした。
-   
+   GithubDesktopを使ってclone,pushした
+   
 
