@@ -9,7 +9,7 @@ public class TextGui extends JFrame {
 
 		JPanel panel = new JPanel();
 
-		JTextField tf = new JTextField("",20);
+		JTextField tf = new JTextField("",20);N
 		JPasswordField psf = new JPasswordField("Hello");
 
 		panel.add(psf,BorderLayout.NORTH);
