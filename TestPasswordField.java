@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+//import java.swing.JCheckBox;
 public class TestPasswordField extends JFrame {
 	public static void main(String[] args) {
 		TestPasswordField frame = new TestPasswordField("Hello");
