@@ -41,7 +41,7 @@ public class Fukushu extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("click!");
 		if(this.cb.isSelected()){
-			this.lbl.setText("Check!");
+			this.lbl.setText(this.cb.getText()+"Check!");
 		}else{
 			this.lbl.setText("No Check!");
 		}
