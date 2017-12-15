@@ -5,26 +5,31 @@ public class HelloJRadioButton extends JFrame implements ActionListener {
 	JButton btn;
 	JRadioButton[] rb;
 	JLabel lbl;
-
 	HelloJRadioButton(String title) {
 		setTitle(title);
 		setSize(400,400);
 		setLocation(200,200);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 		btn = new JButton("Push!");
 		rb = new JRadioButton[3];
 		rb[0] = new JRadioButton("左");
 		rb[1] = new JRadioButton("中");
 		rb[2] = new JRadioButton("右");
 		lbl = new JLabel("押してね！");
-
-
-
 		JPanel pnl = new JPanel();
 		pnl.setLayout(new GridLayout(2,3));
 		btn.addActionListener(this);
 		ButtonGroup radio = new ButtonGroup();
+		JMenu radioM = new JMenu("file");
+		JMenuBar radioMb = new JMenuBar();
+		JMenuItem mitem = new JMenuItem("new");
+		radioM.add(rb[0]);
+		radioM.add(rb[1]);
+		radioM.add(rb[2]);
+
+		radioMb.add(radioM);
+		add(radioMb);
+
 		radio.add(rb[0]);
 		radio.add(rb[1]);
 		radio.add(rb[2]);
@@ -34,22 +39,20 @@ public class HelloJRadioButton extends JFrame implements ActionListener {
 		pnl.add(rb[2]);
 		pnl.add(btn);
 		pnl.add(lbl);
-
+		pnl.add(radioM);
 		Container cp = getContentPane();
 		cp.add(pnl,BorderLayout.NORTH);
 	}
 	public static void main(String[] args) {
 		HelloJRadioButton frame = new HelloJRadioButton("Hello");
 		frame.setVisible(true);
-
 	}
 	public void actionPerformed(ActionEvent e){
-		System.out.println("クリック！");
+		System.out.println("ゲット！");
 		for (int i=0; i<3; i++) {
 			if(this.rb[i].isSelected()) {
 			this.lbl.setText(this.rb[i].getText()+"だよ！");
 			}
-		}
-		
+		}	
 	}
 }
