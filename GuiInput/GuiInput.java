@@ -18,14 +18,14 @@ public class GuiInput extends JFrame implements ActionListener {
 		setTitle(title);
 		setSize(400,400);
 		setLocation(400,400);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
 		btn = new JButton("書き込み");
 		textf = new JTextField();
 		lbl = new JLabel("書き込んでね");
 		btn.addActionListener(this);
 		JPanel pnl = new JPanel();
-		pnl.setLayout(new GridLayout(2,2));
+		pnl.setLayout(new GridLayout(2,5));
 		pnl.add(lbl);
 		pnl.add(textf);
 		pnl.add(btn);
@@ -50,5 +50,24 @@ public class GuiInput extends JFrame implements ActionListener {
 		}catch(IOException e){
 			System.out.println("ファイルの操作に失敗しました。");
 		}
+	}
+	public void windowClosing(WindowEvent w){
+		System.out.println("Test");
+		displayMessage("WindowListener method called: windowClosing.");
+        //A pause so user can see the message before
+        //the window actually closes.
+        ActionListener task = new ActionListener() {
+            boolean alreadyDisposed = false;
+            public void actionPerformed(ActionEvent e) {
+                if (frame.isDisplayable()) {
+                    alreadyDisposed = true;
+                    frame.dispose();
+                }
+            }
+        };
+        Timer timer = new Timer(500, task); //fire every half second
+        timer.setInitialDelay(2000);        //first delay 2 seconds
+        timer.setRepeats(false);
+        timer.start();
 	}
 }
