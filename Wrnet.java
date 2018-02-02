@@ -19,9 +19,17 @@ public class Wrnet{
 			instr = wrsocket.getInputStream();
 			outstr = wrsocket.getOutputStream();
 
-     	 	for (i=0; i<outM.length(); i++) 
+     	 	/*for (i=0; i<outM.length(); i++) 
          	outstr.write((int)outM.charAt(i));
-     		outstr.write('\n');
+     		outstr.write('\n');*/
+     		InputStreamReader isr = new InputStreamReader(instr);
+     		BuffredReader dr = new BuffredReader(isr);
+     		PrintWriter pw = new PrintWriter(outatr);
+
+     		String data2 = "";
+     		pw.println(data2);
+     		pw.flush();
+
 		
 			int n = instr.read(buff);
 			System.out.write(buff, 0, n);
