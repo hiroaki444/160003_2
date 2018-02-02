@@ -1,18 +1,20 @@
- import java.io.*;
+import java.io.*;
  import javax.swing.*;
  import java.awt.*;
  import java.awt.event.*;
  
- public class GuiInput extends JFrame implements ActionListener{
+ public class TestGui extends JFrame implements ActionListener{
   	JButton btn;
    	JTextField textF;
-     JLabel label;
+     JLabel[] label; //ここ
      JRadioButton radioA;
      JRadioButton radioB;
      JRadioButton radioO;
      JRadioButton radioAB;
-  
- 	GuiInput (String title){
+     
+     
+      
+ 	TestGui(String title){
   		//windowの設定
   		setTitle(title);
     		setSize(500,500);
@@ -24,8 +26,12 @@
          this.btn = new JButton("入力");	
          btn.addActionListener(this);
          textF = new JTextField();
-         label = new JLabel("氏名");
+         label = new JLabel[3];//ここ
+         label[0] = new JLabel("氏名");//ここ
+         label[1] = new JLabel("血液型");//ここ
+         label[2] = new JLabel("");//ここ
          ButtonGroup btnG = new ButtonGroup();
+         
          this.radioA = new JRadioButton("A",true);
          this.radioB = new JRadioButton("B");
          this.radioO = new JRadioButton("O");
@@ -36,8 +42,10 @@
          btnG.add(radioO);
          btnG.add(radioAB);
          
-         panel.add(label);
+         panel.add(label[0]);//ここ
          panel.add(textF);
+         panel.add(label[1]);//ここ
+         panel.add(label[2]);//ここ
          panel.add(radioA);
          panel.add(radioB);
          panel.add(radioO);
@@ -51,7 +59,7 @@
          
  	}          
  	public static void main(String[] args){
-			GuiInput  frame = new GuiInput ("Hello");
+			TestGui frame = new TestGui("Hello");
     		frame.setVisible(true);
  	}
   	public void actionPerformed(ActionEvent e){
@@ -70,11 +78,11 @@
        	try{
          	FileWriter fw = new FileWriter("data.txt",true);
           	BufferedWriter bw = new BufferedWriter(fw);
-             	bw.append(data+";"+ketueki+"\r\n");
+             	bw.append("氏名:"+data+", 血液型:"+ketueki+"\r\n");
               	textF.setText("");
               	bw.close();
          }catch(IOException a){
          	System.out.println("エラー");
          }
    	}
- }P
+ }
